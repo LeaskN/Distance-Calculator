@@ -27,12 +27,15 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  padding: 1rem;
   min-width: 320px;
   min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 1rem;
   line-height: 1.1;
 }
 
@@ -54,7 +57,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+input{
+  margin: 3px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

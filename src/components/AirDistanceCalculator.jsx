@@ -39,7 +39,7 @@ const AirDistanceCalculator = () => {
     var R = 6371;
     // result 
     var calculatedDist = (c * R).toString()
-    setDistance("Distance: " + calculatedDist + "km");
+    setDistance("Distance: " + Math.ceil(calculatedDist) + "km");
   }
 
   return (

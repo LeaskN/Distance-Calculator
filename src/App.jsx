@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import AirDistanceCalculator from './components/AirDistanceCalculator';
 import SimpleMap from './components/SimpleMap';
+import Header from './components/Header';
 
 function App() {
   const [data, setData] = useState('');
@@ -12,8 +13,8 @@ function App() {
 
   return (
     <>
+      <Header />
       <SimpleMap data={data} />
-      {/* <SimpleMap data={data} /> */}
       <AirDistanceCalculator childToParent={childToParent}/>
     </>
   )

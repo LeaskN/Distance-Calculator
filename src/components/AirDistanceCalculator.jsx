@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const AirDistanceCalculator = () => {
-  const initLat1 = 40.8759
-  const initLong1 = -73.5971
+const AirDistanceCalculator = ({childToParent}) => {
+  const initLat1 = 40.7128
+  const initLong1 = -74.0060
   const initLat2 = 27.7743
   const initLong2 = -82.6389
 
@@ -11,6 +11,11 @@ const AirDistanceCalculator = () => {
   const [longA, setLongA] = useState(initLong1);
   const [longB, setLongB] = useState(initLong2);
   const [distance, setDistance] = useState('');
+
+  useEffect(() => {
+    console.log('sending data')
+    childToParent({latA, latB, longA, longB})
+  }, [distance])
 
 
   var degreeToRad = (deg) => {
@@ -43,38 +48,34 @@ const AirDistanceCalculator = () => {
   }
 
   return (
-    <div style={{ width: 300 }}>
+    <div>
       <h1>Air Distance Calculator</h1>
       <div>
         <input
-          type="text"
+          type="number"
           id="latitudeA"
           placeholder="Point A Latitude"
-          style={{ width: 100 }}
-          onChange={(event) => setLatA(event.target.value)}
+          onChange={(event) => setLatA(Number(event.target.value))}
         />
         <input
-          type="text"
+          type="number"
           id="longitudeA"
           placeholder="Point A Longitude"
-          style={{ width: 100 }}
-          onChange={(event) => setLongA(event.target.value)}
+          onChange={(event) => setLongA(Number(event.target.value))}
         />
       </div>
       <div>
         <input
-          type="text"
+          type="number"
           id="latitudeB"
           placeholder="Point B Latitude"
-          style={{ width: 100 }}
-          onChange={(event) => setLatB(event.target.value)}
+          onChange={(event) => setLatB(Number(event.target.value))}
         />
         <input
-          type="text"
+          type="number"
           id="longitudeB"
           placeholder="Point B Longitude"
-          style={{ width: 100 }}
-          onChange={(event) => setLongB(event.target.value)}
+          onChange={(event) => setLongB(Number(event.target.value))}
         />
       </div>
       <button onClick={calculateDistance}>Calculate</button>

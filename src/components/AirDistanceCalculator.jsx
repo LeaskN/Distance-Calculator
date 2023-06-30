@@ -13,7 +13,6 @@ const AirDistanceCalculator = ({childToParent}) => {
   const [distance, setDistance] = useState('');
 
   useEffect(() => {
-    console.log('sending data')
     childToParent({latA, latB, longA, longB})
   }, [distance])
 

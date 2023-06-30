@@ -1,10 +1,11 @@
 import GoogleMapReact from 'google-map-react';
 import { useEffect, useState } from 'react';
-import { MapPin } from 'react-feather';
 
-export default function SimpleMap({ data }) {
-  if (!data) return <div>Loading...</div>;
-  return <Map data={data} />;
+const Marker = props => {
+  return <>
+    <div className="pin"></div>
+    <div className="pulse"></div>
+  </>
 }
 
 function Map({ data }) {
@@ -25,12 +26,7 @@ function Map({ data }) {
           center={[liveData.latA, liveData.longA] }
           defaultZoom={10}
         >
-          {/* <MapPin 
-            lat={parseFloat(data.latA)}
-            lng= {parseFloat(data.longB)}
-            fill="red"
-            style={{transform: 'translateZ(0) translate(-50%, -50%)', position: "absolute"}}
-          /> */}
+          <Marker lat={liveData.latA} lng={liveData.longA} />
         </GoogleMapReact>
       </div>
       <div> Point B
@@ -42,14 +38,14 @@ function Map({ data }) {
           center={[liveData.latB, liveData.longB]}
           defaultZoom={10}
         >
-          {/* <MapPin 
-            lat={parseFloat(data.latA)}
-            lng= {parseFloat(data.longB)}
-            fill="red"
-            style={{transform: 'translateZ(0) translate(-50%, -50%)', position: "absolute"}}
-          /> */}
+          <Marker lat={liveData.latB} lng={liveData.longB} />
         </GoogleMapReact>
       </div>
     </div>
   );
 };
+
+export default function SimpleMap({ data }) {
+  if (!data) return <div>Loading...</div>;
+  return <Map data={data} />;
+}
